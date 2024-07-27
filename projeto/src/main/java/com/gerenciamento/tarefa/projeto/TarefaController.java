@@ -50,14 +50,15 @@ public class TarefaController {
     @PutMapping // atualizar dados
     @Transactional
     @CrossOrigin(origins = "http://localhost:3000")
-    public void atualizarTarefa(@Valid @RequestBody DadosAtualizarTarefa dados){
+    public ResponseEntity<DadosAtualizadoTarefa> atualizarTarefa(@Valid @RequestBody DadosAtualizarTarefa dados){
         var tarefa = repositorioTarefa.getReferenceById(dados.id());
         tarefa.atualizarDado(dados);
+        return ResponseEntity.ok(new DadosAtualizadoTarefa(tarefa)); // mostrar a tarefa inteira, ate as partes que nao foram atualizadas
     }
 
 
     @DeleteMapping("/{id}")
-    @Transactional
+    @Transactional // deletar dados, o transactional é para garantir que a operação seja feita por completo
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Void> deletarTarefa(@PathVariable Long id){
         repositorioTarefa.deleteById(id);
