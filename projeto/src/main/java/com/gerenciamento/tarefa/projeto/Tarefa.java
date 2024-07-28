@@ -3,7 +3,6 @@ package com.gerenciamento.tarefa.projeto;
 import com.gerenciamento.tarefa.projeto.TarefaDTO.DadosAtualizarTarefa;
 import com.gerenciamento.tarefa.projeto.TarefaDTO.TarefaDTO;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

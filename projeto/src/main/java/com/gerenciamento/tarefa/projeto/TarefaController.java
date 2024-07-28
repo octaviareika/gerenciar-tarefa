@@ -1,6 +1,5 @@
 package com.gerenciamento.tarefa.projeto;
 
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.web.PageableDefault;
@@ -51,8 +50,8 @@ public class TarefaController {
     @Transactional
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<DadosAtualizadoTarefa> atualizarTarefa(@Valid @RequestBody DadosAtualizarTarefa dados){
-        var tarefa = repositorioTarefa.getReferenceById(dados.id());
-        tarefa.atualizarDado(dados);
+        var tarefa = repositorioTarefa.getReferenceById(dados.id()); // pegar a tarefa pelo id
+        tarefa.atualizarDado(dados); // atualizar os dados
         return ResponseEntity.ok(new DadosAtualizadoTarefa(tarefa)); // mostrar a tarefa inteira, ate as partes que nao foram atualizadas
     }
 
